@@ -14,7 +14,7 @@
   </section>
   <div class="flex-table">
     <div class="flex-header"><p *ngFor="let item of headersRow">{{item | dataPipe}}</p></div>
-    <div class="flex-data" *ngFor="let record of records | filterIssueCount: requiredIssueCount">
+    <div class="flex-data" *ngFor="let record of records | filterIssueCount: requiredIssueCount: 'issueCount'">
       <p>{{record.firstName | dataPipe}}</p>
       <p>{{record.surName | dataPipe}}</p>
       <p>{{record.issueCount}}</p>

@@ -6,10 +6,10 @@ import { CSVRecord } from '../models/csvRecordModel';
 })
 export class FilterIssueCountPipe implements PipeTransform {
 
-  transform(value: CSVRecord[], args: string): any {
-    if (args) {
+  transform(value: CSVRecord[], filterValue: string, filterCriteria: string): any {
+    if (filterValue && filterCriteria) {
       return value.filter((element: any) => {
-        return element.issueCount == args;
+        return element[filterCriteria] == filterValue;
       });
     }
     return value;
