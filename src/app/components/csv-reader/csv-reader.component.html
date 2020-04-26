@@ -1,0 +1,24 @@
+<section class="section">
+  <div class="form-control">
+    <input #csvReader name="upload csv" accept=".csv" type="file" placeholder="Select a csv file" (change)="uploadCSV($event)" />
+    <button *ngIf="records.length" (click) ="fileReset()">Reset</button>
+  </div>
+  <div>
+    <p class="error" *ngIf="error">{{error}}</p>
+  </div>
+</section>
+<section class="section csv-result" *ngIf="records.length">
+  <section>
+    <label>Filter on issue count</label>
+    <input type="number" [(ngModel)]="requiredIssueCount"/>
+  </section>
+  <div class="flex-table">
+    <div class="flex-header"><p *ngFor="let item of headersRow">{{item | dataPipe}}</p></div>
+    <div class="flex-data" *ngFor="let record of records | filterIssueCount: requiredIssueCount">
+      <p>{{record.firstName | dataPipe}}</p>
+      <p>{{record.surName | dataPipe}}</p>
+      <p>{{record.issueCount}}</p>
+      <p>{{record.dob | dataPipe | date}}</p>
+    </div>
+  </div>
+</section>
