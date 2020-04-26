@@ -29,7 +29,7 @@ describe('FilterIssueCountPipe', () => {
       }
     ];
     const pipe = new FilterIssueCountPipe();
-    const result = pipe.transform(testRecord, '7');
+    const result = pipe.transform(testRecord, '7', 'issueCount');
     expect(result).toEqual(expected);
   });
 });
